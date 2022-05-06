@@ -523,4 +523,42 @@ describe('jsonast', () => { // {{{
 		expect(actual.elements).toHaveLength(2);
 	}); // }}}
 
+	it('should not error when encountering escaped quotes', () => { // {{{
+		const expected: Types.JsonArray = {
+			type: 'array',
+			elements: [
+				{
+					type: 'string',
+					value: '"foo"',
+					pos: {
+						start: {
+							line: 1,
+							column: 2,
+							char: 1,
+						},
+						end: {
+							line: 1,
+							column: 11,
+							char: 10,
+						},
+					},
+				},
+			],
+			pos: {
+				start: {
+					line: 1,
+					column: 1,
+					char: 0,
+				},
+				end: {
+					line: 1,
+					column: 12,
+					char: 11,
+				},
+			},
+		};
+
+		expect(parseJSON(String.raw`["\"foo\""]`)).toStrictEqual(expected);
+	}); // }}}
+
 }); // }}}

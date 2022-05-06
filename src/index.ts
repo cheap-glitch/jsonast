@@ -138,6 +138,11 @@ function string(cs: CharacterStream): Types.JsonString {
 	let value = '';
 	cs.accept('"');
 	while (cs.ch !== '"') {
+		if (cs.ch === '\\') {
+			cs.next();
+			cs.expect('"');
+		}
+
 		value += cs.ch;
 		cs.next();
 	}

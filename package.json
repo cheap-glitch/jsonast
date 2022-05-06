@@ -1,6 +1,6 @@
 {
   "name": "@cheap-glitch/jsonast",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A JSON to AST parser which allows error recovery.",
   "license": "ISC",
   "author": "cheap glitch <cheap.glitch@gmail.com> (https://github.com/cheap-glitch)",
@@ -46,7 +46,9 @@
     },
     "overrides": [
       {
-        "files": ["src/character-stream.ts"],
+        "files": [
+          "src/character-stream.ts"
+        ],
         "rules": {
           "no-underscore-dangle": "off"
         }
